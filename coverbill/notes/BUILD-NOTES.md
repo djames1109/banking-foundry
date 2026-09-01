@@ -1,5 +1,16 @@
 # CoverBill Gradle Notes
 
+## Build Properties
+
+`gradle.properties` stores values that Gradle and the build can reuse. Keeping
+versions and project metadata there avoids scattering them across build files.
+
+The project properties identify the application (`group` and `version`), define
+the Java source and bytecode level (`sourceCompatibility` and
+`targetCompatibility`), and hold the Spring Boot and dependency-management
+plugin versions. The build file reads the plugin-version properties when it
+applies those plugins.
+
 ## Plugins
 
 Plugins add capabilities to the Gradle build.
