@@ -61,6 +61,30 @@ testImplementation 'org.springframework.boot:spring-boot-starter-test'
 Adds test libraries and Spring's testing utilities. `testImplementation` keeps
 these dependencies out of the production runtime classpath.
 
+## Lombok
+
+Lombok generates Java code during compilation, so it needs an annotation
+processor rather than a normal runtime dependency:
+
+```groovy
+annotationProcessor 'org.projectlombok:lombok'
+```
+
+This tells the Java compiler to run Lombok. The configuration below makes that
+same dependency visible to source code as `compileOnly`, so Lombok annotations
+can be imported without packaging Lombok in the application:
+
+```groovy
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+```
+
+`compileOnly` inherits dependencies from `annotationProcessor`; the reverse is
+not true.
+
 ## Test Task
 
 ```groovy
