@@ -96,3 +96,20 @@ tasks.named('test') {
 Configures Gradle's existing `test` task to discover and run tests through the
 JUnit Platform, which is used by JUnit 5. This does not add JUnit; the test
 starter provides those dependencies.
+
+## Spring Boot 4 Web Tests
+
+Spring Boot 4 separates web-layer test support from the general test starter.
+Use both dependencies when testing MVC controllers:
+
+```groovy
+testImplementation 'org.springframework.boot:spring-boot-starter-test'
+testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+```
+
+The first provides general testing support; the second provides MVC-specific
+test slices such as `@WebMvcTest`. In Boot 4, import that annotation from:
+
+```java
+org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest
+```

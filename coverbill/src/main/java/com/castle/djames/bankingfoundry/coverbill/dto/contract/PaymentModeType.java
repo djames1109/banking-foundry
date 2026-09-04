@@ -1,5 +1,6 @@
 package com.castle.djames.bankingfoundry.coverbill.dto.contract;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -12,6 +13,7 @@ public enum PaymentModeType {
 
     private final String value;
 
+    @JsonCreator
     public static PaymentModeType fromValue(String value) {
         for (PaymentModeType type : values()) {
             if (type.getValue().equalsIgnoreCase(value)) {
